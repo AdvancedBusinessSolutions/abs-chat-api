@@ -8,6 +8,9 @@
   <url>https://github.com/AdvancedBusinessSolutions/abs-chat-api</url>
   
   <properties>
+  
+  
+  
 		<!-- 
 			IMPORTANT 
 			override this from command line when you build the project:
