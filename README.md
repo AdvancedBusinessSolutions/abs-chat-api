@@ -49,11 +49,11 @@ In fase di configurazione del progetto in Eclipse settare la corretta JDK e conv
 Controllare che in "Properties->Project facets" vi siano le seguenti configurazioni:
 
 DynamicWeModule 2.X
-```
+
 Java 1.8
-```
+
 Javascript 1
-```
+
 Jpa 2.X
 
 ### MySql Setup
