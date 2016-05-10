@@ -8,6 +8,9 @@
   <url>https://github.com/AdvancedBusinessSolutions/abs-chat-api</url>
   
   <properties>
+  
+  
+  
 		<!-- 
 			IMPORTANT 
 			override this from command line when you build the project:
@@ -53,7 +56,7 @@
 		</dependency>
 		
 		
-		<!-- Test dependecies  -->
+		<!-- Test dependecies   -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
