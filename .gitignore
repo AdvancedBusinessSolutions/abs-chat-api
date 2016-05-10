@@ -17,3 +17,5 @@ target/
 .project
 deploy/
 /META-INF/
+/.tern-project
+/build.properties
