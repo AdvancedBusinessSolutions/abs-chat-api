@@ -56,14 +56,35 @@ Javascript 1
 
 Jpa 2.X
 
+Effettuare poi Maven Clean e Maven Build da Eclipse
+
 ### MySql Setup
-In progress
+Eseguire lo script sql **src/env_config/db.sql** presente nel progetto. Dal prompt della shell è possibile usare il comando:
+```sh
+$ mysql -uroot -p < src/env_config/db.sql
+```
 
 ### Tomcat Setup
-In progress
+Per effettuare il setup di Tomcat eseguire i seguenti passi:
+* Scaricare [Connector/J] e copiarlo nella cartella TOMCAT_HOME/lib
+* Configurare il datasource per MySql modificando il file TOMCAT_HOME/conf/context.xml e aggiungere il seguente snippet xml all'interno del tag <Context>: 
+```xml
+<Resource name="jdbc/tomcatDataSource" auth="Container" type="javax.sql.DataSource"
+         username="root"
+         password="root"
+         driverClassName="com.mysql.jdbc.Driver"
+         url="jdbc:mysql://localhost:3306/abschat?useUnicode=true&amp;characterEncoding=utf8"
+         maxTotal="25"
+         maxIdle="10"
+         defaultTransactionIsolation="READ_COMMITTED"
+         validationQuery="Select 1" />
+```
+***Nota***: al momento la configurazione prevede l'utilizzo dell'utente root di MySql configurato con password root. Eventualmente modificare la configurazione del datasource. 
 
 ### Test 
-In progress
+Una volta effettuata la build e dopo aver avviato Tomcat, verificate che l'applicazione funzioni correttamente navigando al seguente URL: 
+
+<http://localhost:8080/abs-chat-api/api/menu>
 
 
 [Connector/J]: <https://dev.mysql.com/downloads/connector/j/>
