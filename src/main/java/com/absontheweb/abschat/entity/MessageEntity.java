@@ -1,22 +1,49 @@
-package com.absontheweb.abschat.model;
+package com.absontheweb.abschat.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class Message implements Serializable {
+@Entity
+@Table(name="message")
+public class MessageEntity implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(nullable=false, name="id")
 	private Long id;
+	
+	@Column(nullable=false, name="date")
 	private Date date;
-	private User sender;
+	
+	@ManyToOne
+	@JoinColumn(name = "fk_user")
+	private UserEntity sender;
+	
+	@Column(nullable=false, name="text", length=300)
 	private String text;
-	private Status status;
-	private Chat chat;
+	
+	@ManyToOne
+	@JoinColumn(name = "fk_status")
+	private StatusEntity status;
+	
+	@ManyToOne
+	@JoinColumn(name = "fk_chat")
+	private ChatEntity chat;
 	
 	public Long getId() {
 		return id;
@@ -34,11 +61,11 @@ public class Message implements Serializable {
 		this.date = date;
 	}
 
-	public User getSender() {
+	public UserEntity getSender() {
 		return sender;
 	}
 
-	public void setSender(User sender) {
+	public void setSender(UserEntity sender) {
 		this.sender = sender;
 	}
 
@@ -50,19 +77,19 @@ public class Message implements Serializable {
 		this.text = text;
 	}
 
-	public Status getStatus() {
+	public StatusEntity getStatus() {
 		return status;
 	}
 
-	public void setState(Status status) {
+	public void setState(StatusEntity status) {
 		this.status = status;
 	}
 	
-	public Chat getChat() {
+	public ChatEntity getChat() {
 		return chat;
 	}
 
-	public void setChat(Chat chat) {
+	public void setChat(ChatEntity chat) {
 		this.chat = chat;
 	}
 
